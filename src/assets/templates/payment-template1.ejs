@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reçu de paiement</title>
+  <link rel="stylesheet" href="bootstrap.css">
+  <link rel="stylesheet" href="printings.css">
+  <link rel="stylesheet" href="template1.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    .receipt {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 700px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    section{
+      width:100%;
+    }
+    #logo img {
+      max-width: 150px;
+    }
+    #document-type {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+    #company {
+      font-size: 1rem;
+      color: #333;
+    }
+  
+    .section-header {
+      border-bottom: 2px solid #ddd;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+    .pay-info{      
+      display:flex;
+      justify-content: space-between;
+      width: 100%;}
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      padding: 0.75rem;
+      border-bottom: 1px solid #eee;
+    }
+    th {
+      background-color: #f0f0f0;
+    }
+    .total {
+      font-weight: bold;
+      font-size: 1.1rem;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      margin-left: 50%;
+    }
+    .signature-section {
+      text-align: center;
+      margin-top: 2rem;
+      padding: 1rem;
+      border-top: 2px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div class="receipt">
+    <header class="clearfix">
+            <% if (logo) { %>
+            <div id="logo">
+                <img src="<%= logo %>">
+            </div>
+            <% } %>
+      <h1 id="document-type">Reçu de paiement N° PAY-<%= payment.id %></h1>
+    </header>
+
+    <div class="section">
+      <div class="section-header">Informations sur le paiement</div>
+      <div class="pay-info">
+        <div>
+        <p><strong>Référence :</strong> PAY-<%= payment.id %></p>
+        <p><strong>Date :</strong> <%= payment.date %></p>
+        <p><strong>Entreprise :</strong><%= payment.firm.name %></p>
+      </div>
+      <div>
+        <p><strong>Montant total :</strong> <%= payment.amount %> <%= payment.currency.symbol %> </p>
+        <p><strong>Frais:</strong> <%= payment.fee %> <%= payment.currency.symbol %></p>
+        <p><strong>Taux de change vers Devis de Cabinet:</strong> <%= payment.exangeRate %></p>
+        <p><strong>Mode de paiement :</strong> <%= payment.mode %></p>
+      </div>    
+      </div>
+     
+    </div>
+
+    <div class="section">
+      <div class="section-header">Factures associées</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Facture N°</th>
+            <th>Échéance</th>
+            <th>Total</th>
+            <th>Paiement</th>
+            <th>Taux de change</th>
+            <th>Montant restant</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% invoices.forEach(invoice => { %>
+            <tr>
+              <td style="text-align: left;"><%= invoice.reference%></td>
+              <td style="text-align: center;"><%= invoice.date %></td>
+              <td style="text-align: center;"><%= invoice.total%> <%= invoice.invoiceCurrency %></td>
+              <td style="text-align: center;"><%= invoice.amountPaid %> <%= invoice.invoiceCurrency %></td>
+              <td style="text-align: center;"><%= invoice.convertionRate %></td>
+              <td style="text-align: center;"><%= invoice.remainingAmount %> <%= invoice.invoiceCurrency %></td>
+
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <div class="total">
+        <p>Total payé en <%= payment.currency.label %>  : <%= payment.amount +payment.fee %>  <%= payment.currency.symbol %></p>
+        <p>Total payé en  <%= payment.cabinetCurrency.label %> : <%= (payment.amount +payment.fee)*payment.exangeRate%>  <%= payment.cabinetCurrency.symbol %></p>
+  
+      </div>
+     
+    </div>
+
+ <% if (signature) { %>
+                <img src="<%= signature %>" id="signature">
+                <% }else { %>
+                    <div class="col-4 border h-10 text-center" id="signature">
+                        <strong>Cachet & Signature</strong>
+                    </div>
+                    <% } %>
+  </div>
+</body>
+</html>
+
