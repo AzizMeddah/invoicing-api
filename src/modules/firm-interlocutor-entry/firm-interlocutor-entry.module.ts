@@ -8,7 +8,7 @@ import { UsersModule } from '../user/user.module';
 @Module({
   controllers: [],
   providers: [FirmInterlocutorEntryService],
-  exports: [FirmInterlocutorEntryService],
+  exports: [FirmInterlocutorEntryService, FirmInterlocutorEntryRepositoryModule],
   imports: [
     FirmInterlocutorEntryRepositoryModule,
     forwardRef(()=>InterlocutorModule),

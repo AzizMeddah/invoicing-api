@@ -36,10 +36,10 @@ export class CreateUserDto {
   @IsOptional()
   dateOfBirth?: Date;
 
-  @ApiProperty({ type: Number })
+  @ApiProperty({ type: Number, default: 1 })
   @IsOptional()
   @IsNumber()
-  roleId?: number;
+  roleId?: number = 1;
 
   @ApiProperty({ type: Number })
   @IsOptional()

@@ -6,7 +6,7 @@ import { CountryModule } from '../country/country.module';
 @Module({
   controllers: [],
   providers: [AddressService],
-  exports: [AddressService],
+  exports: [AddressService, AddressRepositoryModule],
   imports: [AddressRepositoryModule, CountryModule],
 })
 export class AddressModule {}

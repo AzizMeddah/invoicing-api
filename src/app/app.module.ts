@@ -16,7 +16,7 @@ import { ClsPluginTransactional } from '@nestjs-cls/transactional';
 import { TransactionalAdapterTypeOrm } from '@nestjs-cls/transactional-adapter-typeorm';
 import { ScheduleModule } from '@nestjs/schedule';
 import { JwtModule } from '@nestjs/jwt';
-
+import { SeedersModule } from 'src/seeder/seeder.module';
 @Module({
   controllers: [HelloController],
   providers: [],
@@ -54,6 +54,7 @@ import { JwtModule } from '@nestjs/jwt';
         }),
       ],
     }),
+    SeedersModule,
     EventEmitterModule.forRoot(),
     ScheduleModule.forRoot(),
     RouterModule.forRoot(),

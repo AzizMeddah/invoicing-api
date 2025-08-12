@@ -5382,10 +5382,10 @@ nestjs-cls@^4.4.1:
   resolved "https://registry.npmjs.org/nestjs-cls/-/nestjs-cls-4.4.1.tgz"
   integrity sha512-4yhldwm/cJ02lQ8ZAdM8KQ7gMfjAc1z3fo5QAQgXNyN4N6X5So9BCwv+BTLRugDCkELUo3qtzQHnKhGYL/ftPg==
 
-nestjs-command@^3.1.4:
-  version "3.1.4"
-  resolved "https://registry.npmjs.org/nestjs-command/-/nestjs-command-3.1.4.tgz"
-  integrity sha512-0RJGR/Z1ePrf/tzvVJjM95U0sJQeMjFCFad1FqWy4ypQ+VxIG9fGkEf6i8zckQOYjHXBZoWG5YwX+/v4Nof/nA==
+nestjs-command@^3.1.5:
+  version "3.1.5"
+  resolved "https://registry.yarnpkg.com/nestjs-command/-/nestjs-command-3.1.5.tgz#52a8923aecb3894bf380f6d58f1a9399c2c43e80"
+  integrity sha512-s1oJNwKvgwivxjbzHAmggnaoPS/0mLaek2d9h93aEjECXHI8NLiJEXG4BTJo9Th61NgIRqkZcNGLXfG3LyrrqQ==
   dependencies:
     lodash.compact "^3.0.1"
     lodash.flattendeep "^4.4.0"

@@ -20,7 +20,7 @@ import { PermissionModule } from '../permission/permission.module';
 @Module({
   controllers: [],
   providers: [FirmService],
-  exports: [FirmService],
+  exports: [FirmService, FirmRepositoryModule],
   imports: [
     FirmRepositoryModule,
     ActivityModule,

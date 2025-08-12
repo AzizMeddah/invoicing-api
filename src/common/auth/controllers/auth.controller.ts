@@ -63,7 +63,7 @@ export class AuthController {
   @Public()
   @Post('reset-password')
   async resetPassword(@Body() dto: ResetPasswordDto) {
-    console.log(dto)
+    console.log(dto);
     await this.authService.resetPassword(dto.token, dto.password);
     return { message: 'Mot de passe réinitialisé avec succès.' };
   }

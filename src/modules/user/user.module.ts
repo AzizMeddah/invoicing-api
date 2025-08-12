@@ -7,7 +7,7 @@ import { RoleModule } from '../role/role.module';
 @Module({
   controllers: [],
   providers: [UserService],
-  exports: [UserService],
+  exports: [UserService, UserRepositoryModule],
   imports: [
     UserRepositoryModule,
     forwardRef(()=>PermissionModule),

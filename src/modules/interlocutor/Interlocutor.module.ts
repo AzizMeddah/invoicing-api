@@ -13,7 +13,7 @@ import { UsersModule } from '../user/user.module';
 @Module({
   controllers: [],
   providers: [InterlocutorService],
-  exports: [InterlocutorService],
+  exports: [InterlocutorService, InterlocutorRepositoryModule],
   imports: [
     InterlocutorRepositoryModule,
     forwardRef(()=>FirmInterlocutorEntryModule),

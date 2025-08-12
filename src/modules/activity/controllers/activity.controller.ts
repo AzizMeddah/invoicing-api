@@ -27,6 +27,7 @@ import { PermissionsGuard } from 'src/modules/permission/guards/permission.guard
 import { Permissions } from 'src/modules/permission/decorators/permission.decorator';
 import { PERMISSIONS } from 'src/app/enums/permissions.enum';
 import { UserService } from 'src/modules/user/services/user.service';
+import '../../../types';
 
 @ApiTags('activity')
 @Controller({
