@@ -39,7 +39,7 @@ export class CreateUserDto {
   @ApiProperty({ type: Number, default: 1 })
   @IsOptional()
   @IsNumber()
-  roleId?: number = 1;
+  roleId?: number;
 
   @ApiProperty({ type: Number })
   @IsOptional()
